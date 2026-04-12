@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FloatingCTA: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const checkVisibility = () => {
+      setIsVisible(!!localStorage.getItem('ageConfirmed'));
+    };
+    
+    checkVisibility();
+    window.addEventListener('ageConfirmed', checkVisibility);
+    return () => window.removeEventListener('ageConfirmed', checkVisibility);
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <div className="floating-cta">
       <a href="#products" className="floating-btn buy">

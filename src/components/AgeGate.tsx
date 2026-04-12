@@ -15,6 +15,7 @@ const AgeGate: React.FC = () => {
 
   const handleConfirm = () => {
     localStorage.setItem('ageConfirmed', 'true');
+    window.dispatchEvent(new Event('ageConfirmed'));
     document.body.style.overflow = 'auto'; // allow scroll
     setIsVisible(false);
   };
@@ -34,7 +35,7 @@ const AgeGate: React.FC = () => {
           当サイトはお酒に関する情報を含んでおります。<br />
           あなたは20歳以上ですか？
         </p>
-        <div className="age-gate-buttons" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div className="age-gate-buttons" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', flexDirection: 'row' }}>
           <button onClick={handleDecline} className="btn-wafu" style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,0.3)', width: '100%', maxWidth: '200px', padding: '1rem' }}>
             いいえ
           </button>
