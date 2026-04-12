@@ -34,12 +34,13 @@ const AgeGate: React.FC = () => {
           当サイトはお酒に関する情報を含んでおります。<br />
           あなたは20歳以上ですか？
         </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-          <button onClick={handleDecline} className="btn-wafu" style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}>
+        <div className="age-gate-buttons" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button onClick={handleDecline} className="btn-wafu" style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,0.3)', width: '100%', maxWidth: '200px', padding: '1rem' }}>
             いいえ
           </button>
-          <button onClick={handleConfirm} className="btn-wafu">
-            はい（20歳以上）
+          <button onClick={handleConfirm} className="btn-wafu" style={{ width: '100%', maxWidth: '200px', padding: '0.8rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', lineHeight: 1.2 }}>
+            <span style={{ fontSize: '1.1rem' }}>はい</span>
+            <span style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>（20歳以上）</span>
           </button>
         </div>
       </div>
