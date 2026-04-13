@@ -412,7 +412,4 @@ h1, h2, h3, h4 {
   .age-gate-buttons {
     flex-direction: column-reverse !important;
   }
-  .seasonal-banner {
-    display: none !important;
-  }
 }

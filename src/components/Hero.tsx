@@ -5,11 +5,30 @@ const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // スーッと表示させるためのマウント遅延
-    const timer = setTimeout(() => {
-      setMounted(true);
-    }, 800);
-    return () => clearTimeout(timer);
+    let timer: NodeJS.Timeout;
+
+    const startMountAnimation = () => {
+      // スーッと表示させるためのマウント遅延
+      timer = setTimeout(() => {
+        setMounted(true);
+      }, 800);
+    };
+
+    // 初回ロード時に年齢確認済みかチェック
+    if (localStorage.getItem('ageConfirmed') === 'true') {
+      startMountAnimation();
+    }
+
+    const handleAgeConfirmed = () => {
+      startMountAnimation();
+    };
+
+    window.addEventListener('ageConfirmed', handleAgeConfirmed);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('ageConfirmed', handleAgeConfirmed);
+    };
   }, []);
 
   return (
